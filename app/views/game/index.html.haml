@@ -1,3 +1,6 @@
+= render 'loading_modal'
+= render 'result_modal'
+
 .game
     %h1.name
         ROCK – PAPER – SCISSORS
@@ -6,9 +9,15 @@
     .call-to-action
         SELECT YOUR BET
     .options
-        = link_to play_path(move: 'rock'), method: :post, remote: true do
-            .option= image_tag "Rock.svg"
-        = link_to play_path(move: 'paper'), method: :post, remote: true do
-            .option= image_tag "Paper.svg"
-        = link_to play_path(move: 'scissors'), method: :post, remote: true do
-            .option= image_tag "Scissors.svg"
+        .option{ data: {id: 'rock'} }
+            = image_tag 'rock.svg'
+            .option-name
+                Rock
+        .option{ data: {id: 'paper'} }
+            = image_tag 'paper.svg'
+            .option-name
+                Paper
+        .option{ data: {id: 'scissors'} }
+            = image_tag 'scissors.svg'
+            .option-name
+                Scissors
