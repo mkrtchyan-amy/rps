@@ -37,9 +37,9 @@ module RPS
     end
 
     def game_result
-      return 'tie' if @player_move == @system_move
+      return 'TIED' if @player_move == @system_move
 
-      send("#{@player_move}_wins?") ? 'win' : 'lose'
+      send("#{@player_move}_wins?") ? 'WON' : 'LOST'
     end
   end
 end

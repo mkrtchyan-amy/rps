@@ -12,8 +12,8 @@ RSpec.describe RPS::Curb do
       expect(subject).to eq 'rock'
     end
 
-    it "raises GameApiError when Curb is not responding" do
-      stub_request(:any, test_uri).to_raise(StandardError)
+    it 'raises an error when Curb is not responding' do
+      stub_request(:any, test_uri).to_timeout
       expect { subject }.to raise_error RPS::Errors:: GameApiError, "Oops. Curb doesn't want to play."
     end
   end
