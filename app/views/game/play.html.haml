@@ -1,0 +1,9 @@
+.close-icon
+.title= "YOU #{@result}!"
+.subtitle= "Curb with #{@system_move} #{system_result(@result)}"
+.options
+  .option.inactive
+    = image_tag "#{@system_move}.svg"
+.confirm
+  %button.confirm-button
+    Ok

@@ -1,0 +1,13 @@
+.game-modal.loading-modal
+  .modal-content
+    .close-icon
+    .title
+      WAITING CURB'S CHOOSE
+    .options
+      .option.inactive.chosen-option
+        = image_tag ''
+        .option-name
+      .option.inactive
+        = image_tag 'loader.svg', class: 'loading'
+        .option-name
+          = image_tag 'curb_logo.png', class: 'curb-logo'
