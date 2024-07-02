@@ -9,15 +9,19 @@
     .call-to-action
         SELECT YOUR BET
     .options
-        .option{ data: {id: 'rock'} }
+        .option{ data: {id: :rock} }
             = image_tag 'rock.svg'
             .option-name
                 Rock
-        .option{ data: {id: 'paper'} }
+        .option{ data: {id: :paper} }
             = image_tag 'paper.svg'
             .option-name
                 Paper
-        .option{ data: {id: 'scissors'} }
+        .option{ data: {id: :scissors} }
             = image_tag 'scissors.svg'
             .option-name
                 Scissors
+        .option{ data: {id: :hammer} }
+            = image_tag 'hammer.svg'
+            .option-name
+                Hammer

@@ -1,12 +1,24 @@
 module RPS
   class Game
+
     attr_reader :player_move
     attr_reader :system_move
 
-    PLAY_OPTIONS = %w[rock paper scissors].freeze
+    PLAY_OPTIONS = %i[rock paper scissors hammer].freeze
+    ROCK_BEATS =  %i[scissors].freeze
+    SCISSORS_BEATS =  %i[paper].freeze
+    PAPER_BEATS =  %i[rock hammer].freeze
+    HAMMER_BEATS =  %i[rock scissors].freeze
+
+    BEATS = {
+      rock: ROCK_BEATS,
+      paper: PAPER_BEATS,
+      scissors: SCISSORS_BEATS,
+      hammer: HAMMER_BEATS
+    }.freeze
 
     def initialize(player_move)
-      @player_move = player_move
+      @player_move = player_move.to_sym
     end
 
     def play
@@ -18,22 +30,16 @@ module RPS
 
     private
 
+    PLAY_OPTIONS.each do |option|
+      define_method("#{option}_wins?") do
+        BEATS[option].include?(@system_move)
+      end
+    end
+
     def validate_player_move!
       return if PLAY_OPTIONS.include?(@player_move)
 
       raise Errors::InvalidMoveError
-    end
-
-    def rock_wins?
-      @system_move == 'scissors'
-    end
-
-    def paper_wins?
-      @system_move == 'rock'
-    end
-
-    def scissors_wins?
-      @system_move == 'paper'
     end
 
     def game_result
